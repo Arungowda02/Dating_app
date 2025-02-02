@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Register your Details</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="container">
+    <h1>Register Page</h1>
+    <h2>register yours details</h2>
+    <form action="/save" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender" required>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+        </select>
+
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" required>
+
+        <label for="interest">Interest:</label>
+        <input type="text" id="interest" name="interest" required>
+
+        <button type="submit">Register</button>
+    </form>
+    <br><br>
+    <h5>If you are registered user click on below</h5>
+    <a href="/index" class="button-link">
+        <button type="button" class="match-btn">Find Your Match</button>
+    </a>
+</div>
+
+</body>
+</html>

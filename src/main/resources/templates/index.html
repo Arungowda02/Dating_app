@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Date App</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="container">
+    <h1>Welcome to Date App</h1>
+    <h2>Date with Yours One</h2>
+    <form action="/find-match" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender" required>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+        </select>
+
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" required>
+
+        <label for="interest">Interest:</label>
+        <input type="text" id="interest" name="interest" required>
+
+        <label for="resultCount">Select number of results:</label>
+        <select id="resultCount" name="resultCount" required>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+
+        <button type="submit">Find Match</button>
+    </form>
+</div>
+<div>
+    <h1>Recommended Matches</h1>
+    <div th:if="${matching != null and not #lists.isEmpty(matching)}">
+        <div th:each="u : ${matching}">
+            <p><strong>Name:</strong> <span th:text="${u.name}"></span></p>
+            <p><strong>Age:</strong> <span th:text="${u.age}"></span></p>
+            <p><strong>Interests:</strong> <span th:text="${u.interests}"></span></p>
+            <hr>
+        </div>
+    </div>
+    <div th:if="${matching == null or #lists.isEmpty(matching)}">
+        <p>No matches found.</p>
+    </div>
+</div>
+
+
+</body>
+</html>
